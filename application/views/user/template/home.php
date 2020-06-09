@@ -60,11 +60,11 @@
 </section><!-- End About Section -->
 
 <!-- ======= Services Section ======= -->
-<section id="services" class="services">
+<section id="portofolio" class="services">
   <div class="container">
 
     <div class="section-title" data-aos="fade-up">
-      <h2>Our Services</h2>
+      <h2>Portofolio</h2>
     </div>
 
     <div class="row">

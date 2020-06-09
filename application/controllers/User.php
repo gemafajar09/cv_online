@@ -5,6 +5,8 @@ class User Extends CI_Controller
     {
         parent:: __construct();
         $this->load->model('M_daftar');
+        $this->load->model('M_komentar');
+        $this->load->model('M_visitor','visitor');
     }
 
     public function index()
@@ -34,7 +36,8 @@ class User Extends CI_Controller
                 $data = [
                     'username' => $user['username'],
                     'id_user' => $user['id_user'],
-                    'nama_user' => $user['nama_user']
+                    'nama_user' => $user['nama_user'],
+                    'id_buat' => $user['id_buat']
                 ];
                 $this->session->set_userdata($data);
                 $this->session->set_flashdata('pesan','Selamat Datang');
@@ -86,6 +89,51 @@ class User Extends CI_Controller
 
         }
 
+    }
+
+    public function komentar()
+    {
+        $email = $_POST['email'];
+        $nama = $_POST['nama'];
+        $komentar = $_POST['komentar'];
+        $tanggal = date('Y-m-d');
+        $data = array(
+            'nama' => $nama,
+            'email' => $email,
+            'komentar' => $komentar,
+            'tanggal_komentar' => $tanggal
+        );
+
+        $this->M_komentar->simpan($data);
+        $this->session->set_flashdata('pesan','Terimakasih Atas Masukan Anda');
+        redirect('halaman');
+    }
+
+    public function komentarBalas()
+    {
+        $id_komentar = $_POST['id_komentar'];
+        $email = $_POST['email'];
+        $nama = $_POST['nama'];
+        $komentar = $_POST['komentar'];
+        $tanggal = date('Y-m-d');
+        $data = array(
+            'id_komentar' => $id_komentar,
+            'nama' => $nama,
+            'email' => $email,
+            'komentar' => $komentar,
+            'tanggal_balasan' => $tanggal
+        );
+
+        $this->M_komentar->simpanBalas($data);
+        $this->session->set_flashdata('pesan','Terimakasih Atas Masukan Anda');
+        redirect('halaman');
+    }
+
+    public function visitor()
+    {
+        $data['visit'] = $this->visitor->sekarang();
+        $data['tor'] = $this->visitor->kemarin();
+        $this->load->view('user/template/visitor',$data);
     }
 
     public function logout()

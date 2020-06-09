@@ -30,6 +30,21 @@
 </head>
 
 <body>
+  <!-- visitor -->
+  <?php
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $tanggal = date("Ymd");
+    $waktu   = time();   
+    $s = $this->db->query("SELECT * FROM statistik WHERE ip='$ip' AND tanggal='$tanggal'")->num_rows();
+         
+         if($s == 0){
+            $this->db->query("INSERT INTO statistik(ip, tanggal, hits, online) VALUES('$ip','$tanggal','1','$waktu')");
+         }
+         else{
+            $this->db->query("UPDATE statistik SET hits=hits+1, online='$waktu' WHERE ip='$ip' AND tanggal='$tanggal'");
+         }
+?>
+  <!--  -->
   <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
   <!-- ======= Header ======= -->
   <header id="header">
@@ -43,14 +58,14 @@
         <ul>
           <li class="active"><a href="<?= base_url('halaman') ?>">Home</a></li>
 
-          <li class="drop-down"><a href="#">About</a>
+          <!-- <li class="drop-down"><a href="#">About</a>
             <ul>
               <li><a href="#">About Us</a></li>
               <li><a href="#">Team</a></li>
             </ul>
-          </li>
+          </li> -->
            
-          <li><a href="#">Portfolio</a></li>
+          <li><a href="<?= base_url('halaman#portofolio') ?>">Portfolio</a></li>
           <?php
             if($this->session->userdata('id_user') != NULL)
             {
@@ -184,37 +199,22 @@
 
           <!-- Slide 1 -->
           <div class="carousel-item active" style="background: url(<?= base_url('assets/img/slide/slide-1.jpg') ?>)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animated fadeInDown">Welcome to <span>Eterna</span></h2>
-                <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
-              </div>
-            </div>
           </div>
-
+<?php
+$slide = $this->db->query("SELECT * FROM `slider`")->result();
+foreach($slide as $a): 
+?>
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url(<?= base_url('assets/img/slide/slide-2.jpg') ?>)">
+          <div class="carousel-item" style="background: url(<?= base_url('upload/slider/'.$a->gambar) ?>)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                <!-- <h2 class="animated fadeInDown">Lorem <span>Ipsum Dolor</span></h2> -->
+                <p class="animated fadeInUp"><?= $a->deskripsi ?></p>
+                <!-- <a href="" class="btn-get-started animated fadeInUp">Read More</a> -->
               </div>
             </div>
           </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url(<?= base_url('assets/img/slide/slide-3.jpg') ?>)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animated fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
-              </div>
-            </div>
-          </div>
-
+<?php endforeach ?>
         </div>
 
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">

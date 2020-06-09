@@ -3,24 +3,24 @@
     <h4>History</h4>
         <div class="card">
             <div class="card-body">
-                <table class="table-wraper">
+                <table class="table table-wraper">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>No</th>
+                            <th>Template</th>
+                            <th>status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <?php foreach($history as $i => $a){ ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $i+1 ?></td>
+                            <td><?= $a->id_template ?></td>
                             <td></td>
                             <td></td>
                         </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>

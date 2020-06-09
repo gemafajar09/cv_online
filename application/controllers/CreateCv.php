@@ -113,8 +113,144 @@ class CreateCv Extends CI_Controller
 
         $where = array('id_buat' => $id_buat);
         $this->M_create->simpanDataDiri($data1,$data2,$where);
+        $id_user = $this->session->userdata('id_user');
+        $dataDiri = array(
+            'id_buat' => $id_buat,
+            'id_user' => $id_user
+        );
         $this->session->set_flashdata('pesan','Silahkan Pilih Skill Berdasarkan Kepandaian Anda.');
-        redirect('create');
+        redirect('buat4');
+    }
+
+    public function inputSkill()
+    {
+        $id = $this->session->userdata('id_user');
+        $ambil = $this->db->query("SELECT id_buat FROM user WHERE id_user='$id'")->row_array();
+        $data['buat'] = $ambil['id_buat'];
+        $data['skill'] = $this->M_create->skillTampil();
+        $this->template->frontend('user/create_cv/isiSkill',$data);
+    }
+
+    public function jawabSoal($id)
+    {
+        $carinama = $this->db->query("SELECT * FROM tb_soal WHERE id_soal='$id'")->row_array();
+        $data['nama_ujian'] = $carinama['soal'];
+        $data['soal'] = $this->M_create->jawabPertanyaan($id);
+        $this->template->frontend('user/create_cv/soal',$data);
+    }
+
+    public function simpanJawaban()
+    {
+        $id_buat = $this->session->userdata('id_buat');
+        $id_soal = $_POST['id_soal'];
+        $id1 = $_POST['id1'];
+        $id2 = $_POST['id2'];
+        $id3 = $_POST['id3'];
+        $id4 = $_POST['id4'];
+        $id5 = $_POST['id5'];
+        $id6 = $_POST['id6'];
+        $id7 = $_POST['id7'];
+        $id8 = $_POST['id8'];
+        $id9 = $_POST['id9'];
+        $id10 = $_POST['id10'];
+        $cek1 = $_POST['cek1'];
+        $cek2 = $_POST['cek2'];
+        $cek3 = $_POST['cek3'];
+        $cek4 = $_POST['cek4'];
+        $cek5 = $_POST['cek5'];
+        $cek6 = $_POST['cek6'];
+        $cek7 = $_POST['cek7'];
+        $cek8 = $_POST['cek8'];
+        $cek9 = $_POST['cek9'];
+        $cek10 = $_POST['cek10'];
+
+        $soal1 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id1'")->row_array();
+        $soal2 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id2'")->row_array();
+        $soal3 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id3'")->row_array();
+        $soal4 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id4'")->row_array();
+        $soal5 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id5'")->row_array();
+        $soal6 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id6'")->row_array();
+        $soal7 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id7'")->row_array();
+        $soal8 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id8'")->row_array();
+        $soal9 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id9'")->row_array();
+        $soal10 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id10'")->row_array();
+        if($soal1['jawaban'] == $cek1)
+        {
+            $hasil1 = $soal1['point'];
+        }else{
+            $hasil1 = 1;
+        }
+        if($soal2['jawaban'] == $cek2)
+        {
+            $hasil2 = $soal2['point'];
+        }else{
+            $hasil2 = 1;
+        }
+        if($soal3['jawaban'] == $cek3)
+        {
+            $hasil3 = $soal3['point'];
+        }else{
+            $hasil3 = 1;
+        }
+        if($soal4['jawaban'] == $cek4)
+        {
+            $hasil4 = $soal4['point'];
+        }else{
+            $hasil4 = 1;
+        }
+        if($soal5['jawaban'] == $cek5)
+        {
+            $hasil5 = $soal5['point'];
+        }else{
+            $hasil5 = 1;
+        }
+        if($soal6['jawaban'] == $cek6)
+        {
+            $hasil6 = $soal6['point'];
+        }else{
+            $hasil6 = 1;
+        }
+        if($soal7['jawaban'] == $cek7)
+        {
+            $hasil7 = $soal7['point'];
+        }else{
+            $hasil7 = 1;
+        }
+        if($soal8['jawaban'] == $cek8)
+        {
+            $hasil8 = $soal8['point'];
+        }else{
+            $hasil8 = 1;
+        }
+        if($soal9['jawaban'] == $cek9)
+        {
+            $hasil9 = $soal9['point'];
+        }else{
+            $hasil9 = 1;
+        }
+        if($soal10['jawaban'] == $cek10)
+        {
+            $hasil10 = $soal10['point'];
+        }else{
+            $hasil10 = 1;
+        }
+        $data = array(
+            'id_buat' => $id_buat,
+            'id_soal' => $id_soal,
+            'k1' => $hasil1,
+            'k2' => $hasil2,
+            'k3' => $hasil3,
+            'k4' => $hasil4,
+            'k5' => $hasil5,
+            'k6' => $hasil6,
+            'k7' => $hasil7,
+            'k8' => $hasil8,
+            'k9' => $hasil9,
+            'k10' => $hasil10
+        );
+        $this->M_create->simpanPoint($data);
+        $this->session->set_flashdata('pesan','Silahkan Pilih Skill Berdasarkan Kepandaian Anda.');
+        redirect('buat4');
     }
 
     private function upload()

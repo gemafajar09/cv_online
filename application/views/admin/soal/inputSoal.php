@@ -26,17 +26,19 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($soal as $i => $a): ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $i+1 ?></td>
+                            <td><?= $a->soal ?></td>
+                            <td><?= $a->a ?></td>
+                            <td><?= $a->b ?></td>
+                            <td><?= $a->c ?></td>
+                            <td><?= $a->d ?></td>
+                            <td><?= $a->jawaban ?></td>
+                            <td><?= $a->point ?></td>
                             <td></td>
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -51,7 +53,7 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
-        <form action="" method="POST">
+        <form action="<?= base_url('simpandetail') ?>" method="POST">
             <div class="form-group">
                 <label>Soal</label>
                 <textarea name="soal" id="" class="form-control"></textarea>
@@ -78,7 +80,7 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
             </div>
             <div class="form-group">
                 <label>Poin</label>
-                <input type="number" name="poin" class="form-control">
+                <input type="number" name="point" class="form-control">
                 <input type="hidden" name="id" value="<?= $this->uri->segment(2) ?>"> 
             </div>
             <div align="right">

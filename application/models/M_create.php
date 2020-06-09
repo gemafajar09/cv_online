@@ -21,4 +21,19 @@ class M_create Extends CI_Model
         $this->db->where($where)->update('buat_cv',$data1);
         $this->db->insert('detail_pendidikan',$data2);
     }
+
+    public function skillTampil()
+    {
+        return $this->db->query("SELECT * FROM tb_soal")->result();
+    }
+
+    public function jawabPertanyaan($id)
+    {
+        return $this->db->query("SELECT * FROM detail_soal WHERE id_soal='$id'")->result();
+    }
+
+    public function simpanPoint($data)
+    {
+        $this->db->insert('tb_matrix',$data);
+    }
 }

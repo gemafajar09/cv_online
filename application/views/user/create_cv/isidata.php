@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <label>D3</label>
-                            <input type="text" class="form-control" name="sma" placeholder="D3" required>
+                            <input type="text" class="form-control" name="d3" placeholder="D3">
                         </div>
                         <div class="form-group">
                             <label>S1</label>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="form-group">
                             <label>Dari</label>
-                            <input type="date" class="form-control" name="d3dari" required>
+                            <input type="date" class="form-control" name="d3dari">
                         </div>
                         <div class="form-group">
                             <label>Dari</label>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="form-group">
                             <label>Sampai</label>
-                            <input type="date" class="form-control" name="d3sampai" required>
+                            <input type="date" class="form-control" name="d3sampai">
                         </div>
                         <div class="form-group">
                             <label>Sampai</label>

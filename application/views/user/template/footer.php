@@ -1,19 +1,55 @@
 <section id="client" class="client">
   <div class="container anyClass" style="height:300px; overflow-y: scroll;">
+<?php
+$data = $this->db->query("SELECT * FROM komentar ORDER BY id_komentar DESC")->result();
+foreach($data as $a):
+?>  
     <div class="media border p-3">
       <img src="<?= base_url('assets/img/user.png') ?>" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
       <div class="media-body">
-        <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-        <p>Lorem ipsum...</p>
+        <h4><?= $a->nama ?><small><i>&nbsp;&nbsp; Posted on <?= $a->tanggal_komentar ?></i></small></h4>
+        <p><?= $a->email ?></p>
+        <p><?= $a->komentar ?></p>
+        <!-- balas komentar -->
+        <?php 
+        $id = $a->id_komentar;
+          $balas = $this->db->query("SELECT * FROM balas_komentar WHERE id_komentar='$id'")->result();
+          foreach($balas as $b):
+        ?>
         <div class="media p-3">
           <img src="<?= base_url('assets/img/user.png') ?>" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
           <div class="media-body">
-            <h4>Jane Doe <small><i>Posted on February 20 2016</i></small></h4>
-            <p>Lorem ipsum...</p>
+            <h4><?= $b->nama ?><small><i>&nbsp;Posted on <?= $b->tanggal_balasan ?></i></small></h4>
+            <p><?= $b->email ?></p>
+            <p><?= $b->komentar ?></p>
           </div>
         </div> 
+      <?php endforeach ?>
+        <!-- balas -->
+        <form action="<?= base_url('komentarBalas') ?>" method="POST">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="hidden" name="id_komentar" value="<?= $a->id_komentar ?>">
+                  <input type="text" name="nama" class="form-control" placeholder="Nama">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="col-md-12">
+                  <textarea name="komentar" class="form-control"></textarea>
+                </div>
+              </div><br>
+              <div align="right">
+                <button type="submit" name="kirim" class="btn btn-primary">Balas</button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+<?php endforeach ?>
   </div>
 </section>
 </main>
@@ -28,7 +64,7 @@
             <p>Silahkan Isikan Komentar Anda.</p>
           </div>
           <div class="col-lg-6">
-            <form action="" method="post">
+            <form action="<?= base_url('komentar') ?>" method="post">
               <div class="card">
                 <div class="cord-body">
                   <div class="row">
@@ -39,7 +75,7 @@
                       <input type="text" required name="nama" class="form-control" placeholder="Nama Lengkap">
                     </div>
                     <div class="col-md-12">
-                      <textarea name="kometar" id="" class="ckeditor" cols="30" rows="10"></textarea>
+                      <textarea name="komentar" id="" class="ckeditor" cols="30" rows="10"></textarea>
                     </div>
                     <div class="col-md-12">
                       <button class="btn btn-success btn-block" type="submit">Komentari</button>
@@ -94,24 +130,7 @@
 
           <div class="col-lg-3 col-md-6 footer-info">
             <h3>Statistik</h3>
-            <div class="card">
-              <div class="card-body">
-                <div class="row" style="text-align: center">
-                  <div class="col-md-4">
-                      <i class="fa fa-globe" style="color:grey; font-size:9px">&nbsp;kemarin</i>
-                      <br><b style="color:black">72</b>
-                  </div>
-                  <div class="col-md-4">
-                    <i class="fa fa-globe" style="color:blue; font-size:9px">&nbsp;Sekarang</i>
-                    <br><b style="color:black">72</b>
-                  </div>
-                  <div class="col-md-4">
-                    <i class="fa fa-globe" style="color:green; font-size:9px">&nbsp;Online</i>
-                    <br><b style="color:black">72</b>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div id="visitor"></div>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -149,6 +168,21 @@
   <script src="<?= base_url('assets/assets/owlcarousel/owl.carousel.js') ?>"></script>
   <!-- Template Main JS File -->
   <script src="<?= base_url('assets/js/main.js') ?>"></script>
+  <script>
+  setInterval(kunjungan, 5000);
+  function kunjungan() {
+     $.ajax({
+        url: '<?= site_url('statistik') ?>',
+        success: function(data){
+         $('#visitor').html(data)
+        },
+        // error : function(){
+        //   alert('Kesalahan Dalam Menambil data')
+        // }
+     }) 
+  }
+
+  </script>
   <!-- register -->
   <script>
     function register()
