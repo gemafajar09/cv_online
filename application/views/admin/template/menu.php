@@ -24,7 +24,7 @@
   <!-- /.navbar -->
 
   <!-- Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-dark elevation-4">
 
     <a href="#" class="brand-link">
       <img src="<?= base_url('assets/admin/') ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -53,7 +53,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="<?= base_url('members') ?>" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fa fa-address-card"></i>
               <p>
                 Member
               </p>
@@ -80,6 +80,22 @@
               <i class="nav-icon fas fa-bookmark"></i>
               <p>
                 Template CV
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="<?= base_url('templates') ?>" class="nav-link">
+              <i class="nav-icon fa fa-desktop"></i>
+              <p>
+                Portofolio
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="<?= base_url('templates') ?>" class="nav-link">
+              <i class="nav-icon fa fa-bullhorn"></i>
+              <p>
+                Berita
               </p>
             </a>
           </li>
