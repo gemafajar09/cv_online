@@ -16,8 +16,14 @@ class M_soal Extends CI_Model
     	$this->db->insert('detail_soal',$data);
     }
 
+    public function editdetailSoal($data, $where)
+    {
+        $this->db->where($where)->update('detail_soal',$data);
+    }
+
     public function tampilSoal($id)
     {
     	return $this->db->query("SELECT * FROM detail_soal WHERE id_soal='$id'")->result();
     }
+
 }

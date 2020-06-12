@@ -30,6 +30,7 @@ $route['soal']['get'] = 'Soal/index';
 $route['simpanSoal']['post'] = 'Soal/simpanSoal';
 $route['inputSoal/(:num)']['get'] = 'Soal/inputSoal/$1';
 $route['simpandetail']['post'] = 'Soal/simpanDetailSoal';
+$route['edit_soal']['post'] = 'Soal/editSoal';
 // matrik
 $route['matrix']['get'] = 'Matrik/index';
 // ==================================
@@ -49,5 +50,6 @@ $route['buat3']['post'] = 'CreateCv/simpanDataDiri';
 $route['buat4']['get'] = 'CreateCv/inputSkill';
 $route['jawabSoal/(:num)']['get'] = 'CreateCv/jawabSoal/$1';
 $route['jawabSimpan']['post'] = 'CreateCv/simpanJawaban';
+$route['selanjutnya']['get'] = 'CreateCv/CetakCv';
 // history
 $route['history']['get'] = 'History/index';
