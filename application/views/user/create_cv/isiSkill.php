@@ -21,7 +21,7 @@
     							Jika semua skill atau kemampuan yang anda miliki sudah benar makan tekan tombol <i><b>Selanjutnya</b></i>  yang ada di bawah.
     						</p>
                             <br>
-                            <a href="" class="btn btn-primary">Selanjutnya</a>
+                            <a href="<?= base_url('selanjutnya') ?>" class="btn btn-primary">Selanjutnya</a>
     					</div>
     				</div>
     			</div>

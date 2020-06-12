@@ -36,7 +36,9 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
                             <td><?= $a->d ?></td>
                             <td><?= $a->jawaban ?></td>
                             <td><?= $a->point ?></td>
-                            <td></td>
+                            <td>
+                                <button class="btn btn-warning" onclick="editData('<?= $a->id_detail ?>')"><i class="fa fa-edit"></i></button>
+                            </td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -56,32 +58,33 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
         <form action="<?= base_url('simpandetail') ?>" method="POST">
             <div class="form-group">
                 <label>Soal</label>
-                <textarea name="soal" id="" class="form-control"></textarea>
+                <textarea name="soal" id="soal" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label>A</label>
-                <textarea name="a" id="" class="form-control"></textarea>
+                <textarea name="a" id="a" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label>B</label>
-                <textarea name="b" id="" class="form-control"></textarea>
+                <textarea name="b" id="b" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label>C</label>
-                <textarea name="c" id="" class="form-control"></textarea>
+                <textarea name="c" id="c" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label>D</label>
-                <textarea name="d" id="" class="form-control"></textarea>
+                <textarea name="d" id="d" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label>Jawaban</label>
-                <input type="text" name="jawaban" class="form-control">
+                <input type="text" name="jawaban" id="jawaban" class="form-control">
             </div>
             <div class="form-group">
                 <label>Poin</label>
-                <input type="number" name="point" class="form-control">
+                <input type="number" name="point" id="point" class="form-control">
                 <input type="hidden" name="id" value="<?= $this->uri->segment(2) ?>"> 
+                <input type="hidden" name="id_detail" id="id_detail">
             </div>
             <div align="right">
                 <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
@@ -92,3 +95,27 @@ $data = $this->db->query("SELECT `soal` FROM `tb_soal` WHERE id_soal='$id'")->re
 
   </div>
 </div>
+
+<script>
+    function editData(id)
+    {
+        $.ajax({
+            url: '<?= base_url('edit_soal') ?>',
+            type: 'POST',
+            data: {'id_detail': id},
+            dataType: 'JSON',
+            success: function(data)
+            {
+                $('#soal').val(data.soal)
+                $('#a').val(data.a)
+                $('#b').val(data.b)
+                $('#c').val(data.c)
+                $('#d').val(data.d)
+                $('#jawaban').val(data.jawaban)
+                $('#point').val(data.point)
+                $('#id_detail').val(data.id_detail)
+                $('#modalSoal').modal()
+            }
+        })
+    }
+</script>

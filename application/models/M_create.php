@@ -36,4 +36,5 @@ class M_create Extends CI_Model
     {
         $this->db->insert('tb_matrix',$data);
     }
+
 }

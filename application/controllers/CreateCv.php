@@ -253,6 +253,11 @@ class CreateCv Extends CI_Controller
         redirect('buat4');
     }
 
+    public function CetakCv()
+    {
+        $this->load->view('user/cetak_cv/cv');
+    }
+
     private function upload()
     {
         $config['upload_path']          = './upload/slider/';
