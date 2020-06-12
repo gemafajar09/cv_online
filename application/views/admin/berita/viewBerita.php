@@ -3,7 +3,7 @@
 		<div class="card">
 			<div class="card-header">
 				<center>
-					<h3>Slider</h3>
+					<h3>Berita</h3>
 				</center>
 				<button class="btn btn-primary" type="button" data-target="#tambahData" data-toggle="modal"><i class="fa fa-plus-circle"></i>Entry Data</button>
 
@@ -13,19 +13,23 @@
 					<thead>
 						<tr>
 							<td>No</td>
-							<td>Gambar</td>
+							<td>Judul Berita</td>
 							<td>Deskripsi</td>
+							<td>Gambar</td>
+							<td>Tanggal Update</td>
 							<td>Action</td>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($slider as $i => $a) : ?>
+						<?php foreach ($berita as $i => $a) : ?>
 							<tr>
 								<td><?= $i + 1 ?></td>
-								<td><img src="<?= base_url('upload/slider/' . $a->gambar) ?>" width="120px" alt=""></td>
+								<td><?= $a->judul_berita ?></td>
 								<td><?= $a->deskripsi ?></td>
+								<td><img src="<?= base_url('upload/berita/' . $a->gambar) ?>" width="120px" alt=""></td>
+								<td><?= $a->tanggal_update ?></td>
 								<td>
-									<button onclick="hapusData('<?= $a->id_slider ?>')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+									<button onclick="hapusData('<?= $a->id_berita ?>')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
 								</td>
 							</tr>
 						<?php endforeach ?>
@@ -40,19 +44,27 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4>Data Slider</h4>
+				<h4>Data Berita</h4>
 			</div>
 			<div class="modal-body">
 				<div class="card">
 					<div class="card-body">
-						<form action="<?= base_url('sliderSimpan') ?>" method="POST" enctype="multipart/form-data">
+						<form action="<?= base_url('beritaSimpan') ?>" method="POST" enctype="multipart/form-data">
+							<div class="form-group">
+								<label>Judul Berita</label>
+								<input type="text" class="form-control" name="judul" id="judul">
+							</div>
+							<div class="form-group">
+								<label>Deskripsi</label>
+								<textarea name="deskripsi" id="deskripsi" class="ckeditor"></textarea>
+							</div>
 							<div class="form-group">
 								<label>Upload Gambar</label>
 								<input type="file" class="form-control" name="gambar" id="gambar">
 							</div>
 							<div class="form-group">
-								<label>Deskripsi</label>
-								<textarea name="deskripsi" id="deskripsi" class="ckeditor"></textarea>
+								<label>Tanggal</label>
+								<input type="date" class="form-control" name="tanggal" id="tanggal">
 							</div>
 							<div align="right">
 								<button type="submit" class="btn btn-primary">Simpan</button>
@@ -76,8 +88,8 @@
 						<h4>Yakin Ingin Menghapus Data..?</h4>
 					</div>
 					<div class="col-md-4">
-						<form action="<?= base_url('sliderHapus') ?>" method="POST">
-							<input type="hidden" id="id_slider" name="id_slider">
+						<form action="<?= base_url('beritaHapus') ?>" method="POST">
+							<input type="text" id="id_berita" name="id_berita">
 							<button type="submit" class="btn btn-primary btn-sm">Hapus</button>
 							<button type="reset" data-dismiss="modal" class="btn btn-danger btn-sm">Batal</button>
 						</form>
@@ -107,7 +119,7 @@
 	}
 
 	function hapusData(id) {
-		$('#id_slider').val(id)
+		$('#id_berita').val(id)
 		$('#hapusData').modal()
 	}
 </script>
