@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller'] = 'User';
 $route['404_override'] = '';
@@ -53,3 +53,8 @@ $route['jawabSimpan']['post'] = 'CreateCv/simpanJawaban';
 $route['selanjutnya']['get'] = 'CreateCv/CetakCv';
 // history
 $route['history']['get'] = 'History/index';
+
+//berita
+$route['berita']['get'] = 'Berita/index';
+$route['beritaSimpan']['post'] = 'Berita/simpanBerita';
+$route['beritaHapus']['post'] = 'Berita/hapusBerita';
