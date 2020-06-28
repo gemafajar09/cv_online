@@ -78,7 +78,7 @@
           ?>
           <li class="drop-down"><a href="#"><img src="<?= base_url('assets/img/user.png') ?>" class="img-circle" width="20px" alt="Cinque Terre"> <?= $this->session->userdata('nama_user') ?></a>
             <ul>
-              <li><a href="<?= base_url('history') ?>">History</a></li>
+              <!-- <li><a href="<?= base_url('history') ?>">History</a></li> -->
               <li><a href="<?= base_url('keluar') ?>">Log Out</a></li>
             </ul>
           </li>

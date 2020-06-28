@@ -10,6 +10,9 @@
                 <a class="nav-link" data-toggle="pill" href="#home2">Biodata</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#home4">Hobi</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-toggle="pill" href="#menu1">Kontak</a>
             </li>
             <li class="nav-item">
@@ -54,10 +57,33 @@
             </div>
 
             <div id="home2" class="container tab-pane fade"><br>
+                <div class="alert alert-info">
+                    <b style="color:red">CONTOH:</b>    
+                nama ******* lahir di ******** anak ke *** dari ****
+                </div>
                  <div class="form-group">
                     <label for="">Biodata</label>
                     <textarea class="form-control" name="data_diri" required></textarea>
                 </div>
+            </div>
+
+            <div id="home4" class="container tab-pane fade"><br>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="checkbox" value="fa fa-futbol-o" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-futbol-o fa-2x"></i>&nbsp;&nbsp;Bermain Bola<br>
+                    <input type="checkbox" value="fa fa-camera-retro" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-camera-retro fa-2x"></i>&nbsp;&nbsp;Foto Grapher<br>
+                    <input type="checkbox" value="fa fa-gamepad" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-gamepad fa-2x"></i>&nbsp;&nbsp;Bermain Game<br>
+                    <input type="checkbox" value="fa fa-code" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-code fa-2x"></i>&nbsp;&nbsp;Web Programing<br>
+                    <input type="checkbox" value="fa fa-cart-plus" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-cart-plus fa-2x"></i>&nbsp;&nbsp;Shoping<br>
+                    <input type="checkbox" value="fa fa-plane" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-plane fa-2x"></i>&nbsp;&nbsp;Traveling<br>
+                </div>
+                <div class="col-md-4">
+                    <input type="checkbox" value="fa fa-book" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-book fa-2x"></i>&nbsp;&nbsp;Membaca<br>
+                    <input type="checkbox" value="fa fa-cutlery" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-cutlery fa-2x"></i>&nbsp;&nbsp;Makan<br>
+                    <input type="checkbox" value="fa fa-headphones" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-headphones fa-2x"></i>&nbsp;&nbsp;Mendengar Musik<br>
+                    <input type="checkbox" value="fa fa-paint-brush" name="hobi[]">&nbsp;&nbsp;<i class="fa fa-paint-brush fa-2x"></i>&nbsp;&nbsp;Melukis<br>
+                </div>
+            </div>
             </div>
 
             <div id="menu3" class="container tab-pane fade"><br>

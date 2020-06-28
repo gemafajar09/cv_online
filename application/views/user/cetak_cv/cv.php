@@ -156,6 +156,15 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
 
             <div class="row bawah">
               <div class="col-md-2">
+                <h3><i class="fa fa-instagram bawah-kontak"></i></h3>
+              </div>
+              <div class="col-md-10">
+                <h4><?= $data['instagram'] ?></h4>
+              </div>
+            </div>
+
+            <div class="row bawah">
+              <div class="col-md-2">
                 <h3><i class="fa fa-whatsapp bawah-kontak"></i></h3>
               </div>
               <div class="col-md-10">
@@ -220,7 +229,7 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
           <!-- Interest -->
             <div class="row kontak">
               <div class="col-md-4">
-                <h4><b>Interest</b> </h4> 
+                <h3><b>Hobies</b> </h3> 
               </div>
               <div class="col-md-8">
                 <div class="garis"></div>
@@ -228,24 +237,14 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
             </div>
             
             <div class="row bawah">
+            <?php 
+            $hobi = $this->db->query("SELECT * FROM hobi WHERE id_buat='$id_buat'")->result();
+            foreach($hobi as $a):
+            ?>
               <div class="col-md-4 jinterest">
-                <i class="fa fa-motorcycle fa-2x"></i>
+                <i class="<?= $a->hobi ?> fa-2x"></i>
               </div>
-              <div class="col-md-4 jinterest">
-                <i class="fa fa-gamepad fa-2x"></i>
-              </div>
-              <div class="col-md-4 jinterest">
-                <i class="fa fa-futbol-o fa-2x"></i>
-              </div>
-              <div class="col-md-4 jinterest">
-                <i class="fa fa-bed fa-2x"></i>
-              </div>
-              <div class="col-md-4 jinterest">
-                <i class="fa fa-music fa-2x"></i>
-              </div>
-              <div class="col-md-4 jinterest">
-                <i class="fa fa-car fa-2x"></i>
-              </div>
+            <?php endforeach ?>
             </div>
 
           <!-- End Interest -->
@@ -361,8 +360,28 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
               <?php } ?>
             </div>
           <!-- End Konten -->
-
-          
+            
+          <div class="row kontak">
+            <div class="col-md-4">
+             <h4> <b>Pengalaman Kerja</b></h4>
+            </div>
+            <div class="col-md-8">
+              <div class="garis-kanan"></div>
+            </div>
+          </div>
+          <?php 
+            $pengalaman = $this->db->query("SELECT * FROM pengalaman WHERE id_buat='$id_buat'")->result();
+            foreach($pengalaman as $a):
+            ?>
+          <div class="row">
+                <div class="col-md-6">
+                    <h5><?= $a->pengalaman ?></h5>
+                </div>
+                <div class="col-md-6">
+                  <h5><?= $a->tahun ?></h5>
+                </div>
+          </div>
+          <?php endforeach ?>
         </div>
       </div>
       <!-- End Sisi Kanan -->
