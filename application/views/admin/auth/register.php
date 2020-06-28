@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Hai Skill Login</title>
+  <title>Register</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?= base_url('assets/admin/') ?>plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -25,7 +25,7 @@
             <div class="card">
             <form action="<?= base_url('registers') ?>" method="POST">
                 <div class="card-body">
-                    <center><h3>Login</h3></center>
+                    <center><h3>Daftar</h3></center>
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" placeholder="Username" name="username" required class="form-control">

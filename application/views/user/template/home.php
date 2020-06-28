@@ -6,22 +6,22 @@
 			<div class="col-lg-4">
 				<div class="icon-box">
 					<i class="icofont-computer"></i>
-					<h3><a href="">Lorem Ipsum</a></h3>
-					<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+					<h3><a href="">Bikin Cv Melalui Desktop</a></h3>
+					<p>Kemudahan yang diberikan untuk membangun sebuah Cv dengan gampang</p>
 				</div>
 			</div>
 			<div class="col-lg-4 mt-4 mt-lg-0">
 				<div class="icon-box">
 					<i class="icofont-image"></i>
-					<h3><a href="">Dolor Sitema</a></h3>
-					<p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+					<h3><a href="">Curiculu Vitae</a></h3>
+					<p>Cv yang telah dibuat dapat anda download secara gratis..!!</p>
 				</div>
 			</div>
 			<div class="col-lg-4 mt-4 mt-lg-0">
 				<div class="icon-box">
 					<i class="icofont-tasks-alt"></i>
-					<h3><a href="">Sed ut perspiciatis</a></h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+					<h3><a href="">Terupdate</a></h3>
+					<p>Template Cv yang akan update setiap harinya.</p>
 				</div>
 			</div>
 		</div>
@@ -64,52 +64,25 @@
 
 		<div class="row">
 			<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-				<div class="icon-box">
+				<!-- <div class="icon-box">
 					<div class="icon"><i class="bx bxl-dribbble"></i></div>
 					<h4><a href="">Lorem Ipsum</a></h4>
 					<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-				</div>
+				</div> -->
+				<img src="<?= base_url('upload/template/5ebbfbce285c6.jpg') ?>">
 			</div>
 
 			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-				<div class="icon-box">
-					<div class="icon"><i class="bx bx-file"></i></div>
-					<h4><a href="">Sed ut perspiciatis</a></h4>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-				</div>
+				<img src="<?= base_url('upload/template/5ebbfbdb20f79.jpg') ?>">
 			</div>
 
-			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+			<!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
 				<div class="icon-box">
 					<div class="icon"><i class="bx bx-tachometer"></i></div>
 					<h4><a href="">Magni Dolores</a></h4>
 					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
 				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-				<div class="icon-box">
-					<div class="icon"><i class="bx bx-world"></i></div>
-					<h4><a href="">Nemo Enim</a></h4>
-					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-				<div class="icon-box">
-					<div class="icon"><i class="bx bx-slideshow"></i></div>
-					<h4><a href="">Dele cardo</a></h4>
-					<p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-				<div class="icon-box">
-					<div class="icon"><i class="bx bx-arch"></i></div>
-					<h4><a href="">Divera don</a></h4>
-					<p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-				</div>
-			</div>
+			</div> -->
 
 		</div>
 
