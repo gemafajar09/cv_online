@@ -1,4 +1,6 @@
 <?php
+ require 'vendor/autoload.php';
+use Dompdf\Dompdf;
 class CreateCv Extends CI_Controller
 {
     public function __construct()
@@ -56,6 +58,7 @@ class CreateCv Extends CI_Controller
         $email = $_POST['email'];
         $instagram = $_POST['instagram'];
         $whatsapp = $_POST['whatsapp'];
+        $data_diri = $_POST['data_diri'];
         $sd = $_POST['sd'];
         $smp = $_POST['smp'];
         $sma = $_POST['sma'];
@@ -76,6 +79,15 @@ class CreateCv Extends CI_Controller
         $s2sampai = $_POST['s2sampai'];
         $gambar = $this->upload();
 
+        // pengalaman
+        $pengalaman = $_POST['pengalaman'];
+        $tahun = $_POST['tahun'];
+
+        foreach($pengalaman as $i => $c)
+        {
+            $this->db->query("INSERT INTO pengalaman (id_buat,pengalaman,tahun) VALUES ('$id_buat','$pengalaman[$i]','$tahun[$i]')");
+        }
+
         $data1 = array(
             'gambar' => $gambar,
             'nama' => $nama_lengkap,
@@ -86,7 +98,8 @@ class CreateCv Extends CI_Controller
             'no_telpon' => $no_telpon,
             'email' => $email,
             'whatsapp' => $whatsapp,
-            'instagram' => $instagram
+            'instagram' => $instagram,
+            'data_diri' => $data_diri
         );
 
         $data2 = array(
@@ -141,7 +154,9 @@ class CreateCv Extends CI_Controller
 
     public function simpanJawaban()
     {
-        $id_buat = $this->session->userdata('id_buat');
+        $id = $this->session->userdata('id_user');
+        $ambil = $this->db->query("SELECT id_buat FROM user WHERE id_user='$id'")->row_array();
+        $id_buat = $ambil['id_buat'];
         $id_soal = $_POST['id_soal'];
         $id1 = $_POST['id1'];
         $id2 = $_POST['id2'];
@@ -255,12 +270,28 @@ class CreateCv Extends CI_Controller
 
     public function CetakCv()
     {
-        $this->load->view('user/cetak_cv/cv');
+
+        $nama_file = "default.pdf";
+      
+
+        $content = $this->load->view('user/cetak_cv/cv', '', TRUE);
+        echo $content; exit;
+        // $dompdf = new Dompdf();
+        // $dompdf->set_base_path("assets/");
+        // $dompdf->loadHtml($content);
+        // // (Optional) Setup the paper size and orientation
+        // $dompdf->setPaper('A4', 'portrait');
+
+        // // Render the HTML as PDF
+        // $dompdf->render();
+
+        // $dompdf->stream($nama_file, array("Attachment" => false));
+        // exit(0);
     }
 
     private function upload()
     {
-        $config['upload_path']          = './upload/slider/';
+        $config['upload_path']          = './upload/dataDiri/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = uniqid();
         $config['overwrite']			= true;

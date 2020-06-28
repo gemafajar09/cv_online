@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -10,21 +10,14 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('assets') ?>/img/cvs.png" rel="icon">
-  <link href="<?= base_url('assets') ?>/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url('assets/') ?>img/cvs.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets') ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets') ?>/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets') ?>/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets') ?>/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets') ?>/vendor/venobox/venobox.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?= base_url('assets') ?>assets/css/style.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
 
@@ -107,7 +100,8 @@
       font-size: .75rem;
       background-color: #007bff;
       margin-top:10px;
-    }
+    }  
+
     /* end sisi kanan */
   </style>
 
@@ -128,14 +122,14 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
       <!-- Sisi Kiri -->
       <div class="col-md-5">
         <div class="samping">
-          <img src="<?= base_url('assets/') ?>img/team/team-1.jpg" alt="" height="550px" width="100%">
+          <img src="<?= base_url('upload/dataDiri/'.$data['gambar']) ?>" alt="" height="550px" width="100%">
           <br>
           <div class="samping-konten">
 
           <!-- Contact -->
             <div class="row kontak">
               <div class="col-md-4">
-                <b>Contact</b>  
+                <b><h3>Contact</h3></b>  
               </div>
               <div class="col-md-8">
                 <div class="garis"></div>
@@ -144,37 +138,37 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
             
             <div class="row bawah">
               <div class="col-md-2">
-                <i class="fa fa-phone bawah-kontak"></i> 
+                <h3><i class="fa fa-phone bawah-kontak"></i> </h3>
               </div>
               <div class="col-md-10">
-                +<?= $data['no_telpon'] ?>
+                <h4>+<?= $data['no_telpon'] ?></h4>
               </div>
             </div>
 
             <div class="row bawah">
               <div class="col-md-2">
-                <i class="fa fa-envelope bawah-kontak"></i>
+                <h3><i class="fa fa-envelope bawah-kontak"></i></h3>
               </div>
               <div class="col-md-10">
-                <?= $data['email'] ?>
+                <h4><?= $data['email'] ?></h4>
               </div>
             </div>
 
             <div class="row bawah">
               <div class="col-md-2">
-                <i class="fa fa-whatsapp bawah-kontak"></i>
+                <h3><i class="fa fa-whatsapp bawah-kontak"></i></h3>
               </div>
               <div class="col-md-10">
-                <?= $data['whatsapp'] ?>
+                <h4><?= $data['whatsapp'] ?></h4>
               </div>
             </div>
 
             <div class="row bawah">
               <div class="col-md-2">
-                <i class="fa fa-map-marker bawah-kontak"></i>    
+                <h3><i class="fa fa-map-marker bawah-kontak"></i>    </h3>
               </div>
               <div class="col-md-10">
-                <?= $data['alamat'] ?>
+                <h4><?= $data['alamat'] ?></h4>
               </div>
             </div>
           
@@ -184,69 +178,49 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
 
             <div class="row kontak">
               <div class="col-md-4">
-                <b>Skills</b>  
+                <h3><b>Skills</b>  </h3>
               </div>
               <div class="col-md-8">
                 <div class="garis"></div>
               </div>
             </div>
+            <?php
+            $datas = $this->db->query("SELECT hasil_perhitungan.*, tb_soal.soal as skill FROM tb_soal JOIN (
+            (SELECT hasil.id_buat, hasil.id_matrix, hasil.id_soal, 
+            ((hasil.k1*10) + (hasil.k2*10) + (hasil.k3*10) + (hasil.k4*10) +(hasil.k5*10) + (hasil.k6*10) + (hasil.k7*10) + (hasil.k8*10) + (hasil.k9*10) + (hasil.k10*10)) AS hasil 
+             FROM 
+            (SELECT tb_matrix.id_buat, tb_matrix.id_matrix, tb_matrix.id_soal, 
+            k1/(SELECT MAX(k1) AS k1 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k1,
+            k2/(SELECT MAX(k2) AS k2 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k2,
+            k3/(SELECT MAX(k3) AS k3 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k3,
+            k4/(SELECT MAX(k4) AS k4 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k4,
+            k5/(SELECT MAX(k5) AS k5 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k5,
+            k6/(SELECT MAX(k6) AS k6 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k6,
+            k7/(SELECT MAX(k7) AS k7 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k7,
+            k8/(SELECT MAX(k8) AS k8 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k8,
+            k9/(SELECT MAX(k9) AS k9 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k9,
+            k10/(SELECT MAX(k10) AS k10 FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') AS k10 
+             FROM tb_matrix WHERE tb_matrix.id_buat = '$id_buat') hasil)) 
+            hasil_perhitungan ON tb_soal.id_soal=hasil_perhitungan.id_soal ORDER BY hasil_perhitungan.hasil DESC")->result();
+            foreach ($datas as $a) {
+            ?>
             <div class="row bawah">
               <div class="col-md-6 skil">
-                Photoshop
+                <h3><?= $a->skill ?></h3>
               </div>
               <div class="col-md-11">
                 <div class="progress">
-                  <div class="progress-bar" style="width:70%">70%</div>
+                  <div class="progress-bar" style="width:<?= round($a->hasil) ?>%"><?= round($a->hasil) ?>%</div>
                 </div>
               </div>
             </div>
-            <div class="row bawah">
-              <div class="col-md-6 skil">
-                Illustrator
-              </div>
-              <div class="col-md-11">
-                <div class="progress">
-                  <div class="progress-bar" style="width:40%">70%</div>
-                </div>
-              </div>
-            </div>
-            <div class="row bawah">
-              <div class="col-md-6 skil">
-                Indesign
-              </div>
-              <div class="col-md-11">
-                <div class="progress">
-                  <div class="progress-bar" style="width:50%">70%</div>
-                </div>
-              </div>
-            </div>
-            <div class="row bawah">
-              <div class="col-md-6 skil">
-                Adobe XD
-              </div>
-              <div class="col-md-11">
-                <div class="progress">
-                  <div class="progress-bar" style="width:60%">70%</div>
-                </div>
-              </div>
-            </div>
-            <div class="row bawah">
-              <div class="col-md-6 skil">
-                Sketch
-              </div>
-              <div class="col-md-11">
-                <div class="progress">
-                  <div class="progress-bar" style="width:90%">70%</div>
-                </div>
-              </div>
-            </div>
-
+          <?php } ?>
           <!-- End Skills -->
 
           <!-- Interest -->
             <div class="row kontak">
               <div class="col-md-4">
-                <b>Interest</b>  
+                <h4><b>Interest</b> </h4> 
               </div>
               <div class="col-md-8">
                 <div class="garis"></div>
@@ -295,64 +269,100 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
           <!-- konten -->
           <div class="row kontak">
             <div class="col-md-4">
-              <b>Data Diri</b>
+              <h4><b>Data Diri</b></h4>
             </div>
             <div class="col-md-8">
               <div class="garis-kanan"></div>
             </div>
           </div>
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
-          
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
+          <h4>
+          <?= $data['data_diri'] ?>
+          </h4>
           <!-- End Konten -->
           <!-- konten -->
           <div class="row kontak">
             <div class="col-md-4">
-              <b>Jenjang Pendidikan</b>
+             <h4> <b>Jenjang Pendidikan</b></h4>
             </div>
             <div class="col-md-8">
               <div class="garis-kanan"></div>
             </div>
           </div>
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
-          
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
+          <?php
+            $c = $this->db->query("SELECT * FROM detail_pendidikan WHERE id_buat = '$id_buat'")->row_array();
+          ?>
+            <div class="row">
+              <div class="col-md-6">
+                <h5><?= $c['sd'] ?></h5>
+              </div>
+              <div class="col-md-2">
+                <h5><?= $c['dari_sd'] ?></h5>
+              </div>
+              <div class="col-md-1">-</div>
+              <div class="col-md-2">
+                <h5><?= $c['sampai_sd'] ?></h5>
+              </div>
+              <!-- smp -->
+              <div class="col-md-6">
+                <h5><?= $c['smp'] ?></h5>
+              </div>
+              <div class="col-md-2">
+                <h5><?= $c['dari_smp'] ?></h5>
+              </div>
+              <div class="col-md-1">-</div>
+              <div class="col-md-2">
+                <h5><?= $c['sampai_smp'] ?></h5>
+              </div>
+              <!-- sma -->
+              <div class="col-md-6">
+                <h5><?= $c['sma'] ?></h5>
+              </div>
+              <div class="col-md-2">
+                <h5><?= $c['dari_sma'] ?></h5>
+              </div>
+              <div class="col-md-1">-</div>
+              <div class="col-md-2">
+               <h5> <?= $c['sampai_sma'] ?></h5>
+              </div>
+              <!-- d3 -->
+              <?php if($c['d3'] != NULL){ ?>
+                <div class="col-md-6">
+                  <h5><?= $c['d3'] ?></h5>
+                </div>
+                <div class="col-md-2">
+                  <h5><?= $c['dari_d3'] ?></h5>
+                </div>
+                <div class="col-md-1">-</div>
+                <div class="col-md-2">
+                  <h5><?= $c['sampai_d3'] ?></h5>
+                </div>
+              <?php }elseif($c['s1'] != NULL){ ?>
+                <div class="col-md-6">
+                  <h5><?= $c['s1'] ?></h5>
+                </div>
+                <div class="col-md-2">
+                  <h5><?= $c['dari_s1'] ?></h5>
+                </div>
+                <div class="col-md-1">-</div>
+                <div class="col-md-2">
+                  <h5><?= $c['sampai_s1'] ?></h5>
+                </div>
+              <?php }elseif($c['s2'] != NULL){ ?>
+                <div class="col-md-6">
+                  <h5><?= $c['s2'] ?></h5>
+                </div>
+                <div class="col-md-2">
+                  <h5><?= $c['dari_s2'] ?></h5>
+                </div>
+                <div class="col-md-1">-</div>
+                <div class="col-md-2">
+                  <h5><?= $c['sampai_s2'] ?></h5>
+                </div>
+              <?php } ?>
+            </div>
           <!-- End Konten -->
 
           
-          <!-- konten -->
-         <!--  <div class="row kontak">
-            <div class="col-md-4">
-              <b>EXPERIENCE</b>
-            </div>
-            <div class="col-md-8">
-              <div class="garis-kanan"></div>
-            </div>
-          </div>
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
-          
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam! -->
-          <!-- End Konten -->
-
-          
-          <!-- konten -->
-          <!-- <div class="row kontak">
-            <div class="col-md-4">
-              <b>EXPERIENCE</b>
-            </div>
-            <div class="col-md-8">
-              <div class="garis-kanan"></div>
-            </div>
-          </div>
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam!
-          
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quis assumenda provident ad, minus nulla animi explicabo accusantium consequuntur quibusdam aliquam molestiae odit facere tempora quisquam possimus necessitatibus recusandae quam! -->
-          <!-- End Konten -->
-
         </div>
       </div>
       <!-- End Sisi Kanan -->
@@ -360,20 +370,18 @@ $data = $this->db->query("SELECT * FROM buat_cv WHERE id_buat = '$id_buat'")->ro
   </div>
 
 <!-- Vendor JS Files -->
-  <script src="<?= base_url('assets') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/php-email-form/validate.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/jquery-sticky/jquery.sticky.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/counterup/counterup.min.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?= base_url('assets') ?>/vendor/venobox/venobox.min.js"></script>
-  <script src="<?= base_url('assets') ?>/ckeditor/ckeditor.js"></script>
-  <script src="<?= base_url('assets') ?>/assets/vendors/highlight.js"></script>
-  <script src="<?= base_url('assets') ?>/assets/js/app.js"></script>
-  <script src="<?= base_url('assets') ?>/assets/owlcarousel/owl.carousel.js"></script>
+  <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Template Main JS File -->
-  <script src="<?= base_url('assets') ?>/js/main.js"></script>
+  <script src="<?= base_url('assets/') ?>js/html2canvas.js"></script>
+  <script type="text/javascript">
+      
+      html2canvas(document.body).then(function(canvas) {
+          document.body.innerHTML= '';
+          document.body.appendChild(canvas);
+      });
+
+      window.print()
+  </script>
 
 </body>
 

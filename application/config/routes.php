@@ -33,6 +33,10 @@ $route['simpandetail']['post'] = 'Soal/simpanDetailSoal';
 $route['edit_soal']['post'] = 'Soal/editSoal';
 // matrik
 $route['matrix']['get'] = 'Matrik/index';
+$route['view/(:num)']['get'] = 'Matrik/cek/$1';
+// portofolio
+$route['portofolio']['get'] = 'Portofolio/index';
+$route['laporan']['get'] = 'Laporan/index';
 // ==================================
 
 $route['halaman']['get'] = 'User/halaman';

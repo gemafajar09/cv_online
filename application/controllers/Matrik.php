@@ -9,11 +9,15 @@ class Matrik Extends CI_Controller
 
 	public function index()
 	{
-		$id = $this->session->userdata('id_user');
-		$dataUser = $this->db->query("SELECT * FROM buat_cv WHERE id_user='$id' ORDER BY id_buat DESC")->row_array();
+		$data['tampil'] = $this->M_matrik->tampil();
+		$this->template->backend('admin/matrix/index',$data);
+	}
+
+	public function cek($id)
+	{
 		$data['matrikAwal'] = $this->M_matrik->nilaiMatrik();
-		$data['matrikAwal2'] = $this->M_matrik->matrikNormalisasi($dataUser['id_buat']);
-		$data['matrikAwal3'] = $this->M_matrik->matrikSaw($dataUser['id_buat']);
+		$data['matrikAwal2'] = $this->M_matrik->matrikNormalisasi($id);
+		$data['matrikAwal3'] = $this->M_matrik->matrikSaw($id);
 		$this->template->backend('admin/matrix/viewMatrix',$data);
 	}
-}
+} 

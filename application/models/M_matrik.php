@@ -1,6 +1,11 @@
 <?php
 class M_matrik Extends CI_Model
 {
+	public function tampil()
+	{
+		return $this->db->query("SELECT a.*, b.nama_user, c.gambar as file FROM buat_cv a LEFT JOIN user b ON a.id_user=b.id_user LEFT JOIN template_cv c ON a.id_template=c.id_template")->result();
+	}
+
 	public function nilaiMatrik()
 	{
 		return $this->db->query("SELECT a.*,b.soal as skill FROM tb_matrix a LEFT JOIN tb_soal b ON a.id_soal=b.id_soal ORDER BY a.id_buat DESC")->result();
@@ -19,7 +24,7 @@ class M_matrik Extends CI_Model
 			k8/(SELECT MAX(k8) AS k8 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k8,
 			k9/(SELECT MAX(k9) AS k9 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k9,
 			k10/(SELECT MAX(k10) AS k10 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k10 
-			 FROM tb_matrix WHERE tb_matrix.id_buat = 1) hasil ON tb_soal.id_soal = hasil.id_soal")->result();
+			 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') hasil ON tb_soal.id_soal = hasil.id_soal")->result();
 	}
 
 	public function matrikSaw($id)
@@ -39,7 +44,7 @@ class M_matrik Extends CI_Model
 		k8/(SELECT MAX(k8) AS k8 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k8,
 		k9/(SELECT MAX(k9) AS k9 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k9,
 		k10/(SELECT MAX(k10) AS k10 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') AS k10 
-		 FROM tb_matrix WHERE tb_matrix.id_buat = 1) hasil)) 
+		 FROM tb_matrix WHERE tb_matrix.id_buat = '$id') hasil)) 
 		hasil_perhitungan ON tb_soal.id_soal=hasil_perhitungan.id_soal ORDER BY hasil_perhitungan.hasil DESC")->result();
 	}
 }
