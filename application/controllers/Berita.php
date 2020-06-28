@@ -40,6 +40,11 @@ class Berita extends CI_Controller
 	public function hapusBerita()
 	{
 		$id = $_POST['id_berita'];
+
+		$gambar = $this->M_berita->tampil_id($id);
+        $gambar1 = $gambar[0]->gambar;
+        unlink('./upload/berita/'.$gambar1);
+
 		$this->M_berita->hapus($id);
 		$this->session->set_flashdata('pesan', 'Data Terhapus');
 		redirect('berita');

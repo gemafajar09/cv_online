@@ -9,7 +9,7 @@
 
 			</div>
 			<div class="card-body">
-				<table id="example1" class="table table-striped">
+				<table id="example2" class="table table-striped">
 					<thead>
 						<tr>
 							<td>No</td>
@@ -89,7 +89,7 @@
 					</div>
 					<div class="col-md-4">
 						<form action="<?= base_url('beritaHapus') ?>" method="POST">
-							<input type="text" id="id_berita" name="id_berita">
+							<input type="hidden" id="id_berita" name="id_berita">
 							<button type="submit" class="btn btn-primary btn-sm">Hapus</button>
 							<button type="reset" data-dismiss="modal" class="btn btn-danger btn-sm">Batal</button>
 						</form>

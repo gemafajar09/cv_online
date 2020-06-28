@@ -28,6 +28,12 @@ class Portofolio Extends CI_Controller
     public function hapusPortofolio()
     {
         $id = $_POST['id_portofolio'];
+        
+        $gambar = $this->M_portofolio->tampil($id);
+        $gambar1 = $gambar[0]->gambar;
+        
+        unlink('./upload/portofolio/'.$gambar1);
+        
         $this->M_portofolio->hapus($id);
         $this->session->set_flashdata('pesan','Data Terhapus');
         redirect('portofolio');

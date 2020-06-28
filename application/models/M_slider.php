@@ -6,6 +6,11 @@ class M_slider Extends CI_Model
         return $this->db->get_where('slider')->result();
     }
 
+    public function tampil_id($id)
+    {
+        return $this->db->query("SELECT * FROM slider WHERE id_slider='$id'")->result();
+	}
+
     public function simpan($data)
     {
         $this->db->insert('slider',$data);

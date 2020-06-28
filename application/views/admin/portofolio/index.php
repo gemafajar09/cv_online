@@ -9,7 +9,7 @@
 
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-striped">
+                <table id="example2" class="table table-striped">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -23,7 +23,7 @@
                             <td><?= $i+1 ?></td>
                             <td><img src="<?= base_url('upload/portofolio/'.$a->gambar) ?>" width="120px" alt=""></td>
                             <td>
-                                <button onclick="hapusData('')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                <button onclick="hapusData('<?= $a->id_portofolio ?>')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -43,18 +43,10 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?= base_url('templateSimpan') ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('simpanPortofolio') ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Upload Thumbnail</label>
-                                <input type="file" class="form-control" name="gambar1" id="gambar1">
-                            </div>
-                            <div class="form-group">
-                                <label>Upload Template</label>
+                                <label>Upload</label>
                                 <input type="file" class="form-control" name="gambar" id="gambar">
-                            </div>
-                            <div class="form-group">
-                                <label>Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" class="ckeditor"></textarea>
                             </div>
                             <div align="right">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -78,8 +70,8 @@
                         <h4>Yakin Ingin Menghapus Data..?</h4>
                     </div>
                     <div class="col-md-4">
-                        <form action="<?= base_url('templateHapus') ?>" method="POST">
-                            <input type="hidden" id="id_template" name="id_template">
+                        <form action="<?= base_url('hapusPortofolio') ?>" method="POST">
+                            <input type="hidden" id="id_portofolio" name="id_portofolio">
                             <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
                             <button type="reset" data-dismiss="modal" class="btn btn-danger btn-sm">Batal</button>
                         </form>
@@ -111,7 +103,7 @@
 
     function hapusData(id)
     {
-        $('#id_template').val(id)
+        $('#id_portofolio').val(id)
         $('#hapusData').modal()
     }
 </script>

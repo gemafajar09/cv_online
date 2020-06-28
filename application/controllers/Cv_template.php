@@ -34,6 +34,15 @@ class Cv_template Extends CI_Controller
     public function hapusTemplate()
     {
         $id = $_POST['id_template'];
+        
+        $gambar = $this->M_template->tampil_id($id);
+        $gambar1 = $gambar[0]->gambar;
+        unlink('./upload/template/'.$gambar1);
+
+        
+        $gambar2 = $gambar[0]->thumbnail;
+        unlink('./upload/thumbnail/'.$gambar2);
+        
         $this->M_template->hapus($id);
         $this->session->set_flashdata('pesan','Data Terhapus');
         redirect('templates');
