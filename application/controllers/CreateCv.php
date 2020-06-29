@@ -88,6 +88,13 @@ class CreateCv Extends CI_Controller
             $this->db->query("INSERT INTO pengalaman (id_buat,pengalaman,tahun) VALUES ('$id_buat','$pengalaman[$i]','$tahun[$i]')");
         }
 
+        // hobi
+        $hobi = $_POST['hobi'];
+        foreach($hobi as $i => $e)
+        {
+            $this->db->query("INSERT INTO hobi (id_buat,hobi) VALUES ('$id_buat','$hobi[$i]')");
+        }
+
         $data1 = array(
             'gambar' => $gambar,
             'nama' => $nama_lengkap,

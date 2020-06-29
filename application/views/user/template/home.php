@@ -35,7 +35,7 @@
 
 		<?php foreach ($berita as $i => $a) { ?>
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-6 img-responsive">
 					<img src="<?= base_url('upload/berita/' . $a->gambar) ?>" width="350px" class="img-fluid" alt="">
 				</div>
 				<div class="col-lg-6 pt-4 pt-lg-0 content">
