@@ -62,6 +62,9 @@
       dom: 'Bfrtip',
       buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
     });
+    $("#example2").DataTable({
+      responsive: true,
+    });
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

@@ -30,6 +30,11 @@ class Slider Extends CI_Controller
     public function hapusSlider()
     {
         $id = $_POST['id_slider'];
+
+        $gambar = $this->M_slider->tampil_id($id);
+        $gambar1 = $gambar[0]->gambar;
+        unlink('./upload/slider/'.$gambar1);
+
         $this->M_slider->hapus($id);
         $this->session->set_flashdata('pesan','Data Terhapus');
         redirect('sliders');

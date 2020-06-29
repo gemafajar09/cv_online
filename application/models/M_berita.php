@@ -10,6 +10,11 @@ class M_berita extends CI_Model
 		return $this->db->query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 1")->result();
 	}
 
+	public function tampil_id($id)
+    {
+        return $this->db->query("SELECT * FROM berita WHERE id_berita='$id'")->result();
+	}
+
 	public function getbyid($id = 'id_berita')
 	{
 		return $this->db->query("SELECT * FROM berita WHERE id_berita='$id' ORDER BY id_berita DESC LIMIT 1")->result();

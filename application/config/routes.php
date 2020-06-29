@@ -36,6 +36,8 @@ $route['matrix']['get'] = 'Matrik/index';
 $route['view/(:num)']['get'] = 'Matrik/cek/$1';
 // portofolio
 $route['portofolio']['get'] = 'Portofolio/index';
+$route['simpanPortofolio']['post'] = 'Portofolio/simpanPortofolio';
+$route['hapusPortofolio']['post'] = 'Portofolio/hapusPortofolio';
 $route['laporan']['get'] = 'Laporan/index';
 // ==================================
 
