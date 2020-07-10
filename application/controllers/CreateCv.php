@@ -196,65 +196,106 @@ class CreateCv Extends CI_Controller
         $soal8 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id8'")->row_array();
         $soal9 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id9'")->row_array();
         $soal10 = $this->db->query("SELECT * FROM detail_soal WHERE id_detail='$id10'")->row_array();
-        if($soal1['jawaban'] == $cek1)
-        {
-            $hasil1 = $soal1['point'];
-        }else{
-            $hasil1 = 1;
+        
+        // jawaban 1
+        if($soal1['jawaban_a'] == $cek1){
+            $hasil1 = $soal1['point_a'];
+        }elseif($soal1['jawaban_b'] == $cek1){
+            $hasil1 = $soal1['point_b'];
+        }elseif($soal1['jawaban_c'] == $cek1){
+            $hasil1 = $soal1['point_c'];
+        }elseif($soal1['jawaban_d'] == $cek1){
+            $hasil1 = $soal1['point_d'];
         }
-        if($soal2['jawaban'] == $cek2)
-        {
-            $hasil2 = $soal2['point'];
-        }else{
-            $hasil2 = 1;
+        // jawaban 2
+        if($soal2['jawaban_a'] == $cek2){
+            $hasil2 = $soal2['point_a'];
+        }elseif($soal2['jawaban_b'] == $cek2){
+            $hasil2 = $soal2['point_b'];
+        }elseif($soal2['jawaban_c'] == $cek2){
+            $hasil2 = $soal2['point_c'];
+        }elseif($soal2['jawaban_d'] == $cek2){
+            $hasil2 = $soal2['point_d'];
         }
-        if($soal3['jawaban'] == $cek3)
-        {
-            $hasil3 = $soal3['point'];
-        }else{
-            $hasil3 = 1;
+        // jawaban 3
+        if($soal3['jawaban_a'] == $cek3){
+            $hasil3 = $soal3['point_a'];
+        }elseif($soal3['jawaban_b'] == $cek3){
+            $hasil3 = $soal3['point_b'];
+        }elseif($soal3['jawaban_c'] == $cek3){
+            $hasil3 = $soal3['point_c'];
+        }elseif($soal3['jawaban_d'] == $cek3){
+            $hasil3 = $soal3['point_d'];
         }
-        if($soal4['jawaban'] == $cek4)
-        {
-            $hasil4 = $soal4['point'];
-        }else{
-            $hasil4 = 1;
+        // jawaban 4
+        if($soal4['jawaban_a'] == $cek4){
+            $hasil4 = $soal4['point_a'];
+        }elseif($soal4['jawaban_b'] == $cek4){
+            $hasil4 = $soal4['point_b'];
+        }elseif($soal4['jawaban_c'] == $cek4){
+            $hasil4 = $soal4['point_c'];
+        }elseif($soal4['jawaban_d'] == $cek4){
+            $hasil4 = $soal4['point_d'];
         }
-        if($soal5['jawaban'] == $cek5)
-        {
-            $hasil5 = $soal5['point'];
-        }else{
-            $hasil5 = 1;
+        // jawaban 5
+         if($soal5['jawaban_a'] == $cek5){
+            $hasil5 = $soal5['point_a'];
+        }elseif($soal5['jawaban_b'] == $cek5){
+            $hasil5 = $soal5['point_b'];
+        }elseif($soal5['jawaban_c'] == $cek5){
+            $hasil5 = $soal5['point_c'];
+        }elseif($soal5['jawaban_d'] == $cek5){
+            $hasil5 = $soal5['point_d'];
         }
-        if($soal6['jawaban'] == $cek6)
-        {
-            $hasil6 = $soal6['point'];
-        }else{
-            $hasil6 = 1;
+        // jawaban 6
+        if($soal6['jawaban_a'] == $cek6){
+            $hasil6 = $soal6['point_a'];
+        }elseif($soal6['jawaban_b'] == $cek6){
+            $hasil6 = $soal6['point_b'];
+        }elseif($soal6['jawaban_c'] == $cek6){
+            $hasil6 = $soal6['point_c'];
+        }elseif($soal6['jawaban_d'] == $cek6){
+            $hasil6 = $soal6['point_d'];
         }
-        if($soal7['jawaban'] == $cek7)
-        {
-            $hasil7 = $soal7['point'];
-        }else{
-            $hasil7 = 1;
+        // jawaban 7
+        if($soal7['jawaban_a'] == $cek7){
+            $hasil7 = $soal7['point_a'];
+        }elseif($soal7['jawaban_b'] == $cek7){
+            $hasil7 = $soal7['point_b'];
+        }elseif($soal7['jawaban_c'] == $cek7){
+            $hasil7 = $soal7['point_c'];
+        }elseif($soal7['jawaban_d'] == $cek7){
+            $hasil7 = $soal7['point_d'];
         }
-        if($soal8['jawaban'] == $cek8)
-        {
-            $hasil8 = $soal8['point'];
-        }else{
-            $hasil8 = 1;
+        // jawaban 8
+        if($soal8['jawaban_a'] == $cek8){
+            $hasil8 = $soal8['point_a'];
+        }elseif($soal8['jawaban_b'] == $cek8){
+            $hasil8 = $soal8['point_b'];
+        }elseif($soal8['jawaban_c'] == $cek8){
+            $hasil8 = $soal8['point_c'];
+        }elseif($soal8['jawaban_d'] == $cek8){
+            $hasil8 = $soal8['point_d'];
         }
-        if($soal9['jawaban'] == $cek9)
-        {
-            $hasil9 = $soal9['point'];
-        }else{
-            $hasil9 = 1;
+        // jawaban 9
+        if($soal9['jawaban_a'] == $cek9){
+            $hasil9 = $soal9['point_a'];
+        }elseif($soal9['jawaban_b'] == $cek9){
+            $hasil9 = $soal9['point_b'];
+        }elseif($soal9['jawaban_c'] == $cek9){
+            $hasil9 = $soal9['point_c'];
+        }elseif($soal9['jawaban_d'] == $cek9){
+            $hasil9 = $soal9['point_d'];
         }
-        if($soal10['jawaban'] == $cek10)
-        {
-            $hasil10 = $soal10['point'];
-        }else{
-            $hasil10 = 1;
+        // jawaban 10
+        if($soal10['jawaban_a'] == $cek10){
+            $hasil10 = $soal10['point_a'];
+        }elseif($soal10['jawaban_b'] == $cek10){
+            $hasil10 = $soal10['point_b'];
+        }elseif($soal10['jawaban_c'] == $cek10){
+            $hasil10 = $soal10['point_c'];
+        }elseif($soal10['jawaban_d'] == $cek10){
+            $hasil10 = $soal10['point_d'];
         }
         $data = array(
             'id_buat' => $id_buat,

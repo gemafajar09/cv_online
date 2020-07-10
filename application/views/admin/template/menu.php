@@ -66,13 +66,13 @@
   						</p>
   					</a>
   				</li>
-  			<!-- 	<li class="nav-item has-treeview">
+  				<li class="nav-item has-treeview">
   					<a href="<?= base_url('matrix') ?>" class="nav-link">
   						<i class="nav-icon fas fa-file"></i>
   						<p>
   							Nilai Matrik
   						</p>
-  					</a> -->
+  					</a>
   				</li>
   				<li class="nav-item has-treeview">
   					<a href="<?= base_url('templates') ?>" class="nav-link">

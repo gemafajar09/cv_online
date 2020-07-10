@@ -42,12 +42,21 @@ class Soal Extends CI_Controller{
     public function simpanDetailSoal()
     {
         $soal = $_POST['soal'];
+
         $a = $_POST['a'];
         $b = $_POST['b'];
         $c = $_POST['c'];
         $d = $_POST['d'];
-        $jawaban = $_POST['jawaban'];
-        $point = $_POST['point'];
+
+        $jawaban_a = $_POST['jawaban_a'];
+        $point_a = $_POST['point_a'];
+        $jawaban_b = $_POST['jawaban_b'];
+        $point_b = $_POST['point_b'];
+        $jawaban_c = $_POST['jawaban_c'];
+        $point_c = $_POST['point_c'];
+        $jawaban_d = $_POST['jawaban_d'];
+        $point_d = $_POST['point_d'];
+
         $id = $_POST['id'];
         $id_detail = $_POST['id_detail'];
 
@@ -58,8 +67,14 @@ class Soal Extends CI_Controller{
             'b' => $b,
             'c' => $c,
             'd' => $d,
-            'jawaban' => $jawaban,
-            'point' => $point
+            'jawaban_a' => $jawaban_a,
+            'point_a' => $point_a,
+            'jawaban_b' => $jawaban_b,
+            'point_b' => $point_b,
+            'jawaban_c' => $jawaban_c,
+            'point_c' => $point_c,
+            'jawaban_d' => $jawaban_d,
+            'point_d' => $point_d,
         );
         $where = array('id_detail' => $id_detail);
         if($id_detail == NULL)
