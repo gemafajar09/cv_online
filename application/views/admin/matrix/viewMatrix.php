@@ -72,16 +72,16 @@
                         <tr>
                             <td><?= $i+1 ?></td>
                             <td><?= $b->soal ?></td>
-                            <td><?= $b->k1 ?></td>
-                            <td><?= $b->k2 ?></td>
-                            <td><?= $b->k3 ?></td>
-                            <td><?= $b->k4 ?></td>
-                            <td><?= $b->k5 ?></td>
-                            <td><?= $b->k6 ?></td>
-                            <td><?= $b->k7 ?></td>
-                            <td><?= $b->k8 ?></td>
-                            <td><?= $b->k9 ?></td>
-                            <td><?= $b->k10 ?></td>
+                            <td><?= number_format($b->k1,2) ?></td>
+                            <td><?= number_format($b->k2,2) ?></td>
+                            <td><?= number_format($b->k3,2) ?></td>
+                            <td><?= number_format($b->k4,2) ?></td>
+                            <td><?= number_format($b->k5,2) ?></td>
+                            <td><?= number_format($b->k6,2) ?></td>
+                            <td><?= number_format($b->k7,2) ?></td>
+                            <td><?= number_format($b->k8,2) ?></td>
+                            <td><?= number_format($b->k9,2) ?></td>
+                            <td><?= number_format($b->k10,2) ?></td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>
